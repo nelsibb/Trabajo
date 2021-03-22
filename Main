@@ -1,0 +1,73 @@
+opcionmenu=0
+opcioncliente=0
+opcionpelicula=0
+opcionfacturar=0
+
+def menu():
+    print("Bienvenido al videoclub, escoja la opcion que desea usar \n 1) Cliente \n 2) Peliculas \n 3) Facturar \n 4) Volver al menu \n 5) Salir")
+    opcionmenu=int(input("ingrese el numero de la opcion que desea digitar "))
+    if opcionmenu == 1:
+        Cliente()
+    elif opcionmenu == 2:
+        Peliculas()
+    elif opcionmenu == 3:
+        Facturar()
+    elif opcionmenu == 4:
+        print("Gracias por usar nuestro software")
+    else:
+        print("Digite un numero valido")
+        menu() 
+    
+
+def Cliente():
+    print("Escoja la opcion que desea usar \n 1) Borrar Cliente \n 2) Ver Clientes \n 3)Agregar Cliente \n 4) Volver al menu \n 5) Salir")
+    opcioncliente=int(input("ingrese el numero de la opcion que desea digitar "))
+    if opcioncliente == 1:
+        BorrarCliente()
+    elif opcioncliente == 2:
+        VerClientes()
+    elif opcioncliente == 3:
+        AgregarClientes()
+    elif opcioncliente == 4:
+        menu()
+    elif opcioncliente == 5:
+        print("Gracias por usar nuestro software")
+    else:
+        print("Digite un numero valido")
+        Cliente() 
+
+def Peliculas():
+    print("Escoja la opcion que desea usar \n 1) Borrar Pelicula \n 2) Comprar Peliculas \n 3)Agregar Peliculas \n 4) Volver al menu \n 5) Salir")
+    opcionpelicula=int(input("ingrese el numero de la opcion que desea digitar "))
+    if opcionpelicula == 1:
+        Peliculas()
+    elif opcionpelicula == 2:
+        Peliculas()
+    elif opcionpelicula == 3:
+        Facturar()
+    elif opcionpelicula == 4:
+        menu()
+    elif opcionpelicula == 5:
+        print("Gracias por usar nuestro software")
+    else:
+        print("Digite un numero valido")
+        Peliculas() 
+
+def Facturar():
+    print("Bienvenido al videoclub, escoja la opcion que desea usar \n 1) Facturar \n 2) Cierre de Caja \n 3) Volver al menu \n 4) Salir")
+    opcionfacturar=int(input("ingrese el numero de la opcion que desea digitar "))
+    if opcionfacturar == 1:
+        Peliculas()
+    elif opcionfacturar == 2:
+        Peliculas()
+    elif opcionfacturar == 3:
+        menu()
+    elif opcionfacturar == 4:
+        print("Gracias por usar nuestro software")  
+    else:
+        print("Digite un numero valido")
+        Peliculas() 
+
+
+
+menu()
