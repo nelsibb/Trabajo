@@ -225,50 +225,50 @@ def EditarPelicula():
         
         print(cal, cred, crid)
     
-    ConsultaEditar=int(input("Digite el numero del tipo de dato que desea editar \n 1) Nombre \n 2) Cedula \n 3) Direccion "))
+    ConsultaEditar=int(input("Digite el numero del tipo de dato que desea editar \n 1) Nombre \n 2) Codigo \n 3) Genero "))
     if ConsultaEditar == 1:
         valorAnterior=str(input("Ingrese el dato que desea editar"))
         valorNuevo=str(input("Ingrese el nuevo dato"))
-        replaceNombre(valorNuevo, valorAnterior, ClientesNombre)
+        replaceNombre(valorNuevo, valorAnterior, PeliculasNombre)
         
     elif ConsultaEditar == 2:
         
         valorAnterior=str(input("Ingrese el dato que desea editar"))
         valorNuevo=str(input("Ingrese el nuevo dato"))1
-        replaceCedula(valorNuevo, valorAnterior, ClientesCedula)
+        replaceCodigo(valorNuevo, valorAnterior, PeliculasCodigo)
         
     elif ConsultaEditar == 3:
 
         valorAnterior=str(input("Ingrese el dato que desea editar"))
         valorNuevo=str(input("Ingrese el nuevo dato"))
-        replaceDireccion(valorNuevo, valorAnterior, ClientesDireccion)
+        replaceGenero(valorNuevo, valorAnterior, PeliculasGenero)
         
     else:
         print("Digite un numero valido")
-        EditarClientes()
+        EditarPeliculas()
 
     DecisionAddCliente=str(input("Desea editar otro dato? si/no "))
     if DecisionAddCliente == "si":
-        EditarClientes()
+        EditarPeliculas()
     else:
-        Cliente()
+        Peliculas()
 
-def replaceNombre(valorNuevo, valorAnterior, ClientesNombre):
-            for i in range(len(ClientesNombre)):
-                if valorAnterior == ClientesNombre[i]:
-                    ClientesNombre[i] = valorNuevo
+def replaceNombre(valorNuevo, valorAnterior, PeliculasNombre):
+            for i in range(len(PeliculasNombre)):
+                if valorAnterior == PeliculasNombre[i]:
+                    PeliculasNombre[i] = valorNuevo
                 print("Dato actualizado")
 
-def replaceCedula(valorNuevo, valorAnterior, ClientesCedula):
-            for i in range(len(ClientesCedula)):
-                if valorAnterior == ClientesCedula[i]:
-                    ClientesCedula[i] = valorNuevo
+def replaceCodigo(valorNuevo, valorAnterior, PeliculasCodigo):
+            for i in range(len(PeliculasCodigo)):
+                if valorAnterior == PeliculasCodigo[i]:
+                    PeliculasCodigo[i] = valorNuevo
                 print("Dato actualizado")
 
-def replaceDireccion(valorNuevo, valorAnterior, ClientesDireccion):
-            for i in range(len(ClientesDireccion)):
-                if valorAnterior == ClientesDireccion[i]:
-                    ClientesDireccion[i] = valorNuevo
+def replaceGenero(valorNuevo, valorAnterior, PeliculasGenero):
+            for i in range(len(PeliculasGenero)):
+                if valorAnterior == PeliculasGenero[i]:
+                    PeliculasGenero[i] = valorNuevo
                 print("Dato actualizado")
 
 
@@ -278,16 +278,16 @@ def Facturar():
     print("Bienvenido al videoclub, escoja la opcion que desea usar \n 1) Facturar \n 2) Cierre de Caja \n 3) Volver al menu \n 4) Salir")
     opcionfacturar=int(input("ingrese el numero de la opcion que desea digitar "))
     if opcionfacturar == 1:
-        Peliculas()
+        Factura()
     elif opcionfacturar == 2:
-        Peliculas()
+        CierreCaja()
     elif opcionfacturar == 3:
         menu()
     elif opcionfacturar == 4:
         print("Gracias por usar nuestro software")  
     else:
         print("Digite un numero valido")
-        Peliculas() 
+        Facturar() 
 
 
 
