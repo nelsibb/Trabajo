@@ -5,9 +5,9 @@ opcionfacturar=0
 ClientesNombre=["Jose"]
 ClientesDireccion=["123"]
 ClientesCedula=["123"]
-PeliculaNombre=[]
-PeliculaCodigo=[]
-PeliculaGenero=[]
+PeliculasNombre=[]
+PeliculasCodigo=[]
+PeliculasGenero=[]
 
 def menu():
     print("Bienvenido al videoclub, escoja la opcion que desea usar \n 1) Cliente \n 2) Peliculas \n 3) Facturar \n 4) Volver al menu \n 5) Salir")
@@ -153,11 +153,11 @@ def Peliculas():
     print("Escoja la opcion que desea usar \n 1) Borrar Pelicula \n 2) Comprar Peliculas \n 3)Agregar Peliculas \n 4) Volver al menu \n 5) Salir")
     opcionpelicula=int(input("ingrese el numero de la opcion que desea digitar "))
     if opcionpelicula == 1:
-        Peliculas()
+        BorrarPeliculas()
     elif opcionpelicula == 2:
-        Peliculas()
+        ComprarPeliculas()
     elif opcionpelicula == 3:
-        Facturar()
+        AgregarPeliculas()
     elif opcionpelicula == 4:
         menu()
     elif opcionpelicula == 5: 
@@ -166,59 +166,111 @@ def Peliculas():
         print("Digite un numero valido")
         Peliculas() 
 
-
-def BorrarCliente():
-    print("Nombre      Cedula    Direccion")
-    for cal, cred, crid in zip(ClientesNombre, ClientesCedula, ClientesDireccion):
+def BorrarPeliculas():
+    print("Nombre      Genero    Codigo")
+    for cal, cred, crid in zip(PeliculasNombre, PeliculasGenero, PeliculasCodigo):
         
         print(cal, cred, crid)
 
-    CedulaBorrar=int(input("Ingrese la cedula del cliente que desea borrar, recuerde que solo pueden ser valores numericos "))
+    CodigoBorrar=str(input("Ingrese el codigo de la pelicula que desea borrar "))
 
     posicion=0
-    while posicion<len(ClientesCedula):
-        if ClientesCedula[posicion] == CedulaBorrar:
+    while posicion<len(PeliculasCodigo):
+        if PeliculasCodigo[posicion] == CodigoBorrar:
 
-            ClientesCedula.pop(posicion)
-            ClientesNombre.pop(posicion)
-            ClientesDireccion.pop(posicion)
-            print("Cliente borrado")
+            PeliculasCodigo.pop(posicion)
+            PeliculasNombre.pop(posicion)
+            PeliculasGenero.pop(posicion)
+            print("Pelicula borrada")
         else:
-            print("No hay ningun cliente con esa cedula")
+            print("No hay ninguna pelicula con ese codigo)
             posicion=posicion+1
 
-    DecisionAddCliente=str(input("Desea borrar otro cliente? si/no "))
-    if DecisionAddCliente == "si":
-        BorrarCliente()
+    DecisionAddPelicula=str(input("Desea borrar otra pelicula? si/no "))
+    if DecisionAddPelicula == "si":
+        BorrarPeliculas()
     else:
-        Cliente()
+        Peliculas()
 
 
-def VerClientes():
-    print("Nombre      Cedula    Direccion")
-    for cal, cred, crid in zip(ClientesNombre, ClientesCedula, ClientesDireccion):
+def VerPeliculas():
+    print("Nombre      Genero    Codigo")
+    for cal, cred, crid in zip(PeliculasNombre, PeliculasGenero, PeliculasCodigo):
         
         print(cal, cred, crid)
 
-    DecisionAddCliente=str(input("Desea seguir viendo la lista de clientes? si/no "))
+    DecisionAddPelicula=str(input("Desea seguir viendo la lista de peliculas? si/no "))
+    if DecisionAddPelicula == "si":
+        VerPeliculas()
+    else:
+        Pelicula()
+
+def AgregarPeliculas():
+    NombrePelicula=str(input("Ingrese el nombre de la pelicula que desea agregar "))
+    PeliculasNombre.append(NombrePelicula)
+    CodigoPelicula=str(input("Ingrese el codigo de la pelicula que desea agregar "))
+    PeliculasCodigo.append(CodigoPelicula)
+    GeneroPelicula=str(input("Ingrese el genero de la pelicula que desea agregar "))
+    PeliculasGenero.append(GeneroPelicula)
+    print("Pelicula Guardada!")
+    DecisionAddPelicula=str(input("Desea agregar otra pelicula? si/no "))
+    if DecisionAddPelicula == "si":
+        AgregarPeliculas()
+    else:
+        Pelicula()
+
+def EditarPelicula():
+    print("Nombre Genero Codigo")
+    for cal, cred, crid in zip(PeliculasNombre, PeliculasGenero, PeliculasCodigo):
+        
+        print(cal, cred, crid)
+    
+    ConsultaEditar=int(input("Digite el numero del tipo de dato que desea editar \n 1) Nombre \n 2) Cedula \n 3) Direccion "))
+    if ConsultaEditar == 1:
+        valorAnterior=str(input("Ingrese el dato que desea editar"))
+        valorNuevo=str(input("Ingrese el nuevo dato"))
+        replaceNombre(valorNuevo, valorAnterior, ClientesNombre)
+        
+    elif ConsultaEditar == 2:
+        
+        valorAnterior=str(input("Ingrese el dato que desea editar"))
+        valorNuevo=str(input("Ingrese el nuevo dato"))1
+        replaceCedula(valorNuevo, valorAnterior, ClientesCedula)
+        
+    elif ConsultaEditar == 3:
+
+        valorAnterior=str(input("Ingrese el dato que desea editar"))
+        valorNuevo=str(input("Ingrese el nuevo dato"))
+        replaceDireccion(valorNuevo, valorAnterior, ClientesDireccion)
+        
+    else:
+        print("Digite un numero valido")
+        EditarClientes()
+
+    DecisionAddCliente=str(input("Desea editar otro dato? si/no "))
     if DecisionAddCliente == "si":
-        VerClientes()
+        EditarClientes()
     else:
         Cliente()
 
-def AgregarClientes():
-    NombreCliente=str(input("ingrese el nombre de la persona que desea agregar "))
-    ClientesNombre.append(NombreCliente)
-    CedulaCliente=int(input("ingrese la cedula de la persona que desea agregar "))
-    ClientesCedula.append(CedulaCliente)
-    DireccionCliente=str(input("ingrese la direccion de la persona que desea agregar "))
-    ClientesDireccion.append(DireccionCliente)
-    print("Cliente Guardado!")
-    DecisionAddCliente=str(input("Desea agregar otro cliente? si/no "))
-    if DecisionAddCliente == "si":
-        AgregarClientes()
-    else:
-        Cliente()
+def replaceNombre(valorNuevo, valorAnterior, ClientesNombre):
+            for i in range(len(ClientesNombre)):
+                if valorAnterior == ClientesNombre[i]:
+                    ClientesNombre[i] = valorNuevo
+                print("Dato actualizado")
+
+def replaceCedula(valorNuevo, valorAnterior, ClientesCedula):
+            for i in range(len(ClientesCedula)):
+                if valorAnterior == ClientesCedula[i]:
+                    ClientesCedula[i] = valorNuevo
+                print("Dato actualizado")
+
+def replaceDireccion(valorNuevo, valorAnterior, ClientesDireccion):
+            for i in range(len(ClientesDireccion)):
+                if valorAnterior == ClientesDireccion[i]:
+                    ClientesDireccion[i] = valorNuevo
+                print("Dato actualizado")
+
 
 
 
